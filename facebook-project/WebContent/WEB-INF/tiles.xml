@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+ 
+<!DOCTYPE tiles-definitions PUBLIC
+       "-//Apache Software Foundation//DTD Tiles Configuration 2.0//EN"
+       "http://tiles.apache.org/dtds/tiles-config_2_0.dtd">
+<tiles-definitions>
+    <definition name="baseLayout" template="/BaseLayout.jsp">
+        <put-attribute name="title" value="" />
+        <put-attribute name="header" value="/header.jsp" />
+         
+        <put-attribute name="body" value="" />
+        
+    </definition>
+   
+    <definition name="error" extends="baseLayout">
+         <put-attribute name="body" value="/errorFriend.jsp" />
+       
+ </definition>
+   
+   
+
+    <definition name="enrollSomeWhatDone" extends="baseLayout">
+        <put-attribute name="body" value="/enrollSomeWhatDone.jsp" />
+       
+    </definition>
+
+ <definition name="home" extends="baseLayout">
+ 	<put-attribute name="title"  value="Home"/>
+ 	<put-attribute name="body"   value="/main.jsp"/>	
+ </definition>
+ 
+ <definition name="myfriend" extends="baseLayout">
+ 	<put-attribute name="title"  value="Friend"/>
+ 	<put-attribute name="body"   value="/MyFriend.jsp"/>	
+ </definition>
+ 
+ <definition name="stuview" extends="baseLayout">
+ 	<put-attribute name="title"  value="Home"/>
+ 	<put-attribute name="body"   value="/fview.jsp"/>	
+ </definition>
+ 
+ <definition name="grades" extends="baseLayout">
+ 	<put-attribute name="title"  value="Grades"/>
+ 	<put-attribute name="body"   value="/Grades.jsp"/>	
+ </definition>
+ 
+ 
+ <definition name="result" extends="baseLayout">
+ 	<put-attribute name="title"  value="Result"/>
+ 	<put-attribute name="body"   value="/Result.jsp"/>	
+ </definition>
+
+
+
+  <definition name="loadEnrolSem" extends="baseLayout">
+     	<put-attribute name="body"   value="/EnrollSelectSem.jsp"/>	
+        
+    </definition>
+ 
+ <definition name="subListEnroll" extends="baseLayout">
+ 	<put-attribute name="title"  value="Result"/>
+ 	<put-attribute name="body"   value="/Enroll.jsp"/>	
+ </definition>
+ 
+  <definition name="enrollDone" extends="baseLayout">
+    	<put-attribute name="body"   value="/enrolledStudentList.jsp"/>	
+ </definition> 
+ 
+  <definition name="enrollNotDone" extends="baseLayout">
+	<put-attribute name="body"   value="/enrollNotDone.jsp"/>	
+ </definition>  
+
+   <definition name="enrollNotRemaining" extends="baseLayout">
+	<put-attribute name="body"   value="/enrollNotRemaining.jsp"/>	
+ </definition>  
+  <definition name="homeDisplay" extends="baseLayout">
+ 	<put-attribute name="title"  value="Home"/>
+ 	<put-attribute name="body"   value="/home.jsp"/>
+ </definition>
+ 
+   <definition name="syllabus" extends="baseLayout">
+ 	<put-attribute name="title"  value="Syllabus"/>
+ 	<put-attribute name="body"   value="/subjectSyllabus.jsp"/>
+ </definition>
+ 
+  <definition name="subjectPage" extends="baseLayout">
+ 	<put-attribute name="title"  value="Subjects"/>
+ 	<put-attribute name="body"   value="/SubjectsPage.jsp"/>
+ </definition>
+ 
+ 
+    <definition name="myProfile" extends="baseLayout">
+ 	<put-attribute name="title"  value="My Profile"/>
+ 	<put-attribute name="body"   value="/MyProfile.jsp"/>
+ </definition>
+    <definition name="EditMyProfile" extends="baseLayout">
+ 	<put-attribute name="title"  value="My Profile"/>
+ 	<put-attribute name="body"   value="/EditProfile.jsp"/>
+ </definition>
+ 
+
+</tiles-definitions>
