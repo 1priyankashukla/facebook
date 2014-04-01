@@ -21,9 +21,9 @@ html, body, .container
 .first {
     float: left;
     width: 100%;
-    height: 10%;
-	background:#4e69a2;
-	position:fixed;
+    height: 7%;
+    
+	   
 }
 
 .second{
@@ -44,31 +44,45 @@ html, body, .container
 
 .fourth {
     float: left;
-    width: 30%;
-    height: 56%;
+    width: 50%;
+    height: 40%;
    background-image:url('images/images.jpeg')   
     
 }
 .fifth {
     float: left;
-    width: 30%;
-    height: 16%;
+    width: 50%;
+    height: 10%;
    background-image:url('images/images.jpeg')   
 }
 
 .sixth {
     float: right;
-    width: 70%;
-    height: 16%;
+    width: 50%;
+    height: 20%;
    background-image:url('images/images.jpeg')   
 }
 
 .seventh {
     float: right;
-    width: 70%;
-    height: 40%;
+    width: 50%;
+    height: 20%;
    background-image:url('images/images.jpeg')   
 }
+.eighth {
+    float: right;
+    width: 50%;
+    height: 10%;
+   background-image:url('images/images.jpeg')   
+}
+
+.ninth {
+    float: left;
+    width: 100%;
+    height: 7%;
+   background-image:url('images/images.jpeg')   
+}
+
 
 a:link {color: black; text-decoration: underline; }
 a:active {color: black; text-decoration: underline; }
@@ -83,13 +97,15 @@ a:hover {color: black; text-decoration: none; }
 <body>
 
 <div class="container">
-<div class="first"><tiles:insertAttribute name="header" /></div> 
+<div class="first" style="background:#4e69a2;position:fixed"><tiles:insertAttribute name="header" /></div> 
 <div class="second"><tiles:insertAttribute name="coverPic" /></div>
 <div class="third"><tiles:insertAttribute name="profileHeader" /></div>
-<div class="fourth"><tiles:insertAttribute name="About" /></div>
-<div class="sixth"><tiles:insertAttribute name="updateStatus" /></div>
-<div class="seventh"><tiles:insertAttribute name="ownNews" /></div>
-
+<div class="ninth"><tiles:insertAttribute name="aboutword" /></div>
+<div class="fourth"><tiles:insertAttribute name="workandEducation" /></div>
+<div class="sixth"><tiles:insertAttribute name="places" /></div>
+<div class="seventh"><tiles:insertAttribute name="basic" /></div>
+<div class="eighth"><tiles:insertAttribute name="contact" /></div>
+<div class="fifth"><tiles:insertAttribute name="relationship" /></div>
 
 </div>
 

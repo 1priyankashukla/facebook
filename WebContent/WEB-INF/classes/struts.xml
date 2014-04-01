@@ -5,16 +5,59 @@
 <struts>
 <constant name="struts.devMode" value="true" />
 
-<package name="SIS_checkout" extends="struts-default">
+   <package name="facebook" extends="struts-default">
      	<result-types>
 			<result-type name="tiles" class="org.apache.struts2.views.tiles.TilesResult" />
 		</result-types>
-   <action name="Temp" class="edu.iiitb.facebook.action.TempAction"
+   
+	<action name="profileTempAction" class="edu.iiitb.facebook.action.statusAction" method="tempReturnSuccess">
+            <result name="success" type="tiles">profileLayout</result>
+            <result name="failure">/login.jsp</result>
+            
+      </action>
+	
+	
+	
+	  <action name="login" class="edu.iiitb.facebook.action.LoginAction" method="doLogin">
+            <result name="success" type="tiles">baseLayout</result>
+            <result name="failure">/login.jsp</result>
+            
+      </action>
+	
+	
+	<action name="About" class="edu.iiitb.facebook.action.aboutAction" method="retreiveAboutInfo">
+            <result name="success" type="tiles">aboutLayout</result>
+            <result name="login">/Login.jsp</result>
+	</action>
+	
+   <action name="updateStatus" class="edu.iiitb.facebook.action.statusAction" method="updateStatus">
+            <result name="success" type="tiles">profileLayout</result>
+            <result name="login">/Login.jsp</result>
+	</action>
+	
+	 <action name="ownNews" class="edu.iiitb.facebook.action.ownNewsAction" method="retrieveOwnNews">
+            <result name="success">/ownNews.jsp</result>
+            <result name="failure">/ownNews.jsp</result>
+	</action>
+	
+     <action name="displayFullConversation" class="edu.iiitb.facebook.action.MessageAction" method="displayFullConversation">
+    <result name="success">/viewMessages.jsp</result>        
+   </action>
+   
+   
+   	<action name="birthday" class="edu.iiitb.facebook.action.BirthdayFeedAction" method="birthdayNotification">
+            <result name="success">/birthdayNotification.jsp</result>
+           
+	</action>
+	
+		
+	 <action name="Search" class="edu.iiitb.facebook.action.SearchAction"
 			method="temp">
-			<result name="success" type="tiles">baseLayout</result>
-			<result name="login">/Login.jsp</result>
+			<result name="success" type="tiles">search</result>
+			<result name="result">search</result>
 		</action>
+   
+   
 	</package>
-
- 
+  
 </struts>
