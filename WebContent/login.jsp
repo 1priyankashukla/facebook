@@ -15,8 +15,19 @@
 }
 </style>
 <head>
+<script>
+function validateForm()
+{
+var x=document.forms["signUpForm"]["fname"].value;
+if (x==null || x=="")
+  {
+  alert("First name must be filled out");
+  return false;
+  }
+}
+</script>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-
+<link rel="shortcut icon" href="Images\favicon.ico">
 <title>Welcome to Facebook</title>
 </head>
 
@@ -39,7 +50,7 @@
   
  <h1><b> Create an account</b></h1>
 <h3>It's free and always will be.</h3>
-<form action="signUp">
+<form name="signUpForm" action="signUp" onsubmit="return validateForm()" method="post">
 
 <br>
 <br>
@@ -222,8 +233,7 @@
  <input type="radio" name="gender" id="male" value="male">
   <label for="male">Male</label>
   <br><br>
-  <input type="image" src="home/sony/Desktop/mid_termOOAD/facebook/WebContent/images/b1.png" alt="Create an account" width="48" height="48"><br>
-</form>
+  <input type="image" src="Images\b1.png" alt="Create an account" width="260" height="65"><br></form>
 </div>
 </body>
 </html>
