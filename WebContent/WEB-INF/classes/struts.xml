@@ -50,6 +50,22 @@
            
 	</action>
 	
+	<action name="workandEducation" class="edu.iiitb.facebook.action.workAndEducation" method="storeWorkEducation">
+            <result name="success">/birthdayNotification.jsp</result>
+           
+	</action>
+	
+	<action name="addPlace" class="edu.iiitb.facebook.action.placeAction" method="addNewPlace">
+            <result name="success" type="tiles">aboutLayout</result>
+           
+	</action>
+	
+	
+	<action name="getplaces" class="edu.iiitb.facebook.action.placeAction" method="retrievePlaces">
+            <result name="success">/placesLived.jsp</result>
+           
+	</action>
+	
 		
 	 <action name="Search" class="edu.iiitb.facebook.action.SearchAction"
 			method="temp">

@@ -20,6 +20,15 @@ function showTextBoxes(){
 
 	
 	}
+
+
+function inputFocus(i){
+    if(i.value==i.defaultValue){ i.value=""; i.style.color="#000"; }
+}
+function inputBlur(i){
+    if(i.value==""){ i.value=i.defaultValue; i.style.color="#888"; }
+}
+
 </script>
 
 </head>
@@ -31,8 +40,9 @@ function showTextBoxes(){
 <input type="submit" value="Edit" id="Edit" onclick="showTextBoxes()"/>
 
 <br/>
-<INPUT TYPE="text" NAME="work" value="where have you worked?" id="work"><br/><br/>
-<INPUT TYPE="text" NAME="education" value="where did you go to College?" id="edu">
-
+<form action="workandEducation">
+<INPUT TYPE="text" NAME="work" value="where have you worked?" title="workandEducation" id="work" onfocus="inputFocus(this)" onblur="inputBlur(this)" onkeypress="submitOnEnter(this, event)"/><br/><br/>
+<INPUT TYPE="text" NAME="education" value="where did you go to College?" id="edu" title="workandEducation" onfocus="inputFocus(this)" onblur="inputBlur(this)" onkeypress="submitOnEnter(this, event)"/>
+</form>
 </body>
 </html>
