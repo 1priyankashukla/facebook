@@ -7,21 +7,7 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Insert title here</title>
 </head>
-<body onload="place.close()">
-<a href="javascript:window.open('newPlace.jsp', 'place', 'width=1000,height=500');">Add Place</a>
-<br/>
-<h3>Places Lived</h3>
-<s:iterator value="placesList">
-	
-	 <s:property value="whereto" /><br/>
-	   <s:property value="address" /><br/>
-	   <s:property value="from" />
-	   
-	   
-	
-</s:iterator>
-
-
-
+<body>
+<s:action name="getplaces" executeResult="true" />
 </body>
 </html>
