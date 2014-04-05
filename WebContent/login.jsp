@@ -13,28 +13,27 @@
     background:#ffecec url('images/error.png') no-repeat 10px 50%;
     
 }
+<!--.connectImage {left:0px;width:46px;} -->
+img
+{
+position:absolute;
+left:0px;
+z-index:-1;
+}
 </style>
 <head>
-<script>
-function validateForm()
-{
-var x=document.forms["signUpForm"]["fname"].value;
-if (x==null || x=="")
-  {
-  alert("First name must be filled out");
-  return false;
-  }
-}
-</script>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <link rel="shortcut icon" href="Images\favicon.ico">
 <title>Welcome to Facebook</title>
 </head>
 
-<body style="background-color:#EEEEEE">
+<body style="background-color:#EEEEEE; width: 100%;
+                height: 100%;
+                margin: 0;
+                padding: 0">
 
 <div style="position:static;width:1500px;height:100px;background-color:#3b5998">
- <form action="login"><br>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; 
+ <form action="login" method="post"><br>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; 
  &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
  <font color="white" size="7"><b> facebook </b></font>
  &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
@@ -46,11 +45,13 @@ if (x==null || x=="")
 <s:if test="hasActionErrors()"> <div class="alert-box"> <s:actionerror/> </div> </s:if>
 </form>
 </div>
-  <div id="content" style="position:absolute; background-color:#EEEEEE;height:1000px;width:1500px;left:700px;top:120px">
+
+    <img src="Images\fb4.png" >
   
+  <div id="content" style="position:absolute; background-color:#eeeff4;height:1000px;width:1500px;left:700px;top:120px">
  <h1><b> Create an account</b></h1>
 <h3>It's free and always will be.</h3>
-<form name="signUpForm" action="signUp" onsubmit="return validateForm()" method="post">
+<form action="signUp" method="post">
 
 <br>
 <br>
@@ -64,176 +65,179 @@ if (x==null || x=="")
 <br><br>
 <select name="day">
   <option value="-1">Day</option>
-  <option value="d1">1</option>
-  <option value="d2">2</option>
-  <option value="d3">3</option>
-  <option value="d4">4</option>
-  <option value="d5">5</option>
-  <option value="d6">6</option>
-  <option value="d7">7</option>
-  <option value="d8">8</option>
-  <option value="d9">9</option>
-  <option value="d10">10</option>
-  <option value="d">11</option>
-  <option value="d">12</option>
-  <option value="d">13</option>
-  <option value="d">14</option>
-  <option value="d">15</option>
-  <option value="d">16</option>
-  <option value="d">17</option>
-  <option value="d">18</option>
-  <option value="d">19</option>
-  <option value="d">20</option>
-  <option value="d">21</option>
-  <option value="d">22</option>
-  <option value="d">23</option>
-  <option value="d">24</option>
-  <option value="d">25</option>
-  <option value="d">26</option>
-  <option value="d">27</option>
-  <option value="d">28</option>
-  <option value="d">29</option>
-  <option value="d">30</option>
-  <option value="d">31</option>
+  <option value="1">1</option>
+  <option value="2">2</option>
+  <option value="3">3</option>
+  <option value="4">4</option>
+  <option value="5">5</option>
+  <option value="6">6</option>
+  <option value="7">7</option>
+  <option value="8">8</option>
+  <option value="9">9</option>
+  <option value="10">10</option>
+  <option value="11">11</option>
+  <option value="12">12</option>
+  <option value="13">13</option>
+  <option value="14">14</option>
+  <option value="15">15</option>
+  <option value="16">16</option>
+  <option value="17">17</option>
+  <option value="18">18</option>
+  <option value="19">19</option>
+  <option value="20">20</option>
+  <option value="21">21</option>
+  <option value="22">22</option>
+  <option value="23">23</option>
+  <option value="24">24</option>
+  <option value="25">25</option>
+  <option value="26">26</option>
+  <option value="27">27</option>
+  <option value="28">28</option>
+  <option value="29">29</option>
+  <option value="30">30</option>
+  <option value="31">31</option>
 </select>
 <select name="month">
   <option value="-1">Month</option>
-  <option value="jan">Jan</option>
-  <option value="feb">Feb</option>
-  <option value="mar">Mar</option>
-  <option value="apr">Apr</option>
-  <option value="may">May</option>
-  <option value="jun">Jun</option>
-  <option value="jul">Jul</option>
-  <option value="aug">Aug</option>
-  <option value="sept">Sept</option>
-  <option value="oct">Oct</option>
-  <option value="nov">Nov</option>
-  <option value="dec">Dec</option>
+  <option value="Jan">Jan</option>
+  <option value="Feb">Feb</option>
+  <option value="Mar">Mar</option>
+  <option value="Apr">Apr</option>
+  <option value="May">May</option>
+  <option value="Jun">Jun</option>
+  <option value="Jul">Jul</option>
+  <option value="Aug">Aug</option>
+  <option value="Sept">Sept</option>
+  <option value="Oct">Oct</option>
+  <option value="Nov">Nov</option>
+  <option value="Dec">Dec</option>
   
   </select>
 <select name="year">
   <option value="-1">Year</option>
-  <option value="1">2014</option>
-  <option value="2">2013</option>
-  <option value="3">2012</option>
-  <option value="4">2011</option>
-  <option value="5">2010</option>
-  <option value="6">2009</option>
-  <option value="7">2008</option>
-  <option value="8">2007</option>
-  <option value="9">2006</option>
-  <option value="10">2005</option>
-  <option value="11">2004</option>
-  <option value="12">2003</option>
-  <option value="13">2002</option>
-  <option value="14">2001</option>
-  <option value="15">2000</option>
-  <option value="16">1999</option>
-  <option value="17">1998</option>
-  <option value="18">1997</option>
-  <option value="19">1996</option>
-  <option value="20">1995</option>
-  <option value="21">1994</option>
-  <option value="22">1993</option>
-  <option value="23">1992</option>
-  <option value="24">1991</option>
-  <option value="25">1990</option>
-  <option value="26">1989</option>
-  <option value="27">1988</option>
-  <option value="28">1987</option>
-  <option value="29">1986</option>
-  <option value="30">1985</option>
-  <option value="31">1984</option>
-  <option value="32">1983</option>
-  <option value="33">1982</option>
-  <option value="34">1981</option>
-  <option value="35">1980</option>
-  <option value="36">1979</option>
-  <option value="37">1978</option>
-  <option value="38">1977</option>
-  <option value="39">1976</option>
-  <option value="40">1975</option>
-  <option value="41">1974</option>
-  <option value="42">1973</option>
-  <option value="43">1972</option>
-  <option value="44">1971</option>
-  <option value="45">1970</option>
-  <option value="46">1969</option>
-  <option value="47">1968</option>
-  <option value="48">1967</option>
-  <option value="49">1966</option>
-  <option value="50">1965</option>
-  <option value="51">1964</option>
-  <option value="52">1963</option>
-  <option value="53">1962</option>
-  <option value="54">1961</option>
-  <option value="55">1960</option>
-  <option value="56">1959</option>
-  <option value="57">1958</option>
-  <option value="58">1957</option>
-  <option value="59">1956</option>
-  <option value="60">1955</option>
-  <option value="61">1954</option>
-  <option value="62">1953</option>
-  <option value="63">1952</option>
-  <option value="64">1951</option>
-  <option value="65">1950</option>
-  <option value="66">1949</option>
-  <option value="67">1948</option>
-  <option value="68">1947</option>
-  <option value="69">1946</option>
-  <option value="70">1945</option>
-  <option value="71">1944</option>
-  <option value="72">1943</option>
-  <option value="73">1942</option>
-  <option value="74">1941</option>
-  <option value="75">1940</option>
-  <option value="76">1939</option>
-  <option value="77">1938</option>
-  <option value="78">1937</option>
-  <option value="79">1936</option>
-  <option value="80">1935</option>
-  <option value="90">1934</option>
-  <option value="100">1933</option>
-  <option value="101">1932</option>
-  <option value="102">1931</option>
-  <option value="103">1930</option>
-  <option value="104">1929</option>
-  <option value="105">1928</option>
-  <option value="106">1927</option>
-  <option value="107">1926</option>
-  <option value="108">1925</option>
-  <option value="109">1924</option>
-  <option value="110">1923</option>
-  <option value="111">1922</option>
-  <option value="112">1921</option>
-  <option value="113">1920</option>
-  <option value="114">1919</option>
-  <option value="115">1918</option>
-  <option value="116">1917</option>
-  <option value="117">1916</option>
-  <option value="118">1915</option>
-  <option value="119">1914</option>
-  <option value="120">1913</option>
-  <option value="121">1912</option>
-  <option value="122">1911</option>
-  <option value="123">1910</option>
-  <option value="124">1909</option>
-  <option value="125">1908</option>
-  <option value="126">1907</option>
-  <option value="125">1906</option>
-  <option value="126">1905</option>
+  <option value="2014">2014</option>
+  <option value="2013">2013</option>
+  <option value="2012">2012</option>
+  <option value="2011">2011</option>
+  <option value="2010">2010</option>
+  <option value="2009">2009</option>
+  <option value="2008">2008</option>
+  <option value="2007">2007</option>
+  <option value="2006">2006</option>
+  <option value="2005">2005</option>
+  <option value="2004">2004</option>
+  <option value="2003">2003</option>
+  <option value="2002">2002</option>
+  <option value="2001">2001</option>
+  <option value="2000">2000</option>
+  <option value="1999">1999</option>
+  <option value="1998">1998</option>
+  <option value="1997">1997</option>
+  <option value="1996">1996</option>
+  <option value="1995">1995</option>
+  <option value="1994">1994</option>
+  <option value="1993">1993</option>
+  <option value="1992">1992</option>
+  <option value="1991">1991</option>
+  <option value="1990">1990</option>
+  <option value="1989">1989</option>
+  <option value="1988">1988</option>
+  <option value="1987">1987</option>
+  <option value="1986">1986</option>
+  <option value="1985">1985</option>
+  <option value="1984">1984</option>
+  <option value="1983">1983</option>
+  <option value="1982">1982</option>
+  <option value="1981">1981</option>
+  <option value="1980">1980</option>
+  <option value="1979">1979</option>
+  <option value="1978">1978</option>
+  <option value="1977">1977</option>
+  <option value="1976">1976</option>
+  <option value="1975">1975</option>
+  <option value="1974">1974</option>
+  <option value="1973">1973</option>
+  <option value="1972">1972</option>
+  <option value="1971">1971</option>
+  <option value="1970">1970</option>
+  <option value="1969">1969</option>
+  <option value="1968">1968</option>
+  <option value="1967">1967</option>
+  <option value="1966">1966</option>
+  <option value="1965">1965</option>
+  <option value="1964">1964</option>
+  <option value="1963">1963</option>
+  <option value="1962">1962</option>
+  <option value="1961">1961</option>
+  <option value="1960">1960</option>
+  <option value="1959">1959</option>
+  <option value="1958">1958</option>
+  <option value="1957">1957</option>
+  <option value="1956">1956</option>
+  <option value="1955">1955</option>
+  <option value="1954">1954</option>
+  <option value="1953">1953</option>
+  <option value="1952">1952</option>
+  <option value="1951">1951</option>
+  <option value="1950">1950</option>
+  <option value="1949">1949</option>
+  <option value="1948">1948</option>
+  <option value="1947">1947</option>
+  <option value="1946">1946</option>
+  <option value="1945">1945</option>
+  <option value="1944">1944</option>
+  <option value="1943">1943</option>
+  <option value="1942">1942</option>
+  <option value="1941">1941</option>
+  <option value="1940">1940</option>
+  <option value="1939">1939</option>
+  <option value="1938">1938</option>
+  <option value="1937">1937</option>
+  <option value="1936">1936</option>
+  <option value="1935">1935</option>
+  <option value="1934">1934</option>
+  <option value="1933">1933</option>
+  <option value="1932">1932</option>
+  <option value="1931">1931</option>
+  <option value="1930">1930</option>
+  <option value="1929">1929</option>
+  <option value="1928">1928</option>
+  <option value="1927">1927</option>
+  <option value="1926">1926</option>
+  <option value="1925">1925</option>
+  <option value="1924">1924</option>
+  <option value="1923">1923</option>
+  <option value="1922">1922</option>
+  <option value="1921">1921</option>
+  <option value="1920">1920</option>
+  <option value="1919">1919</option>
+  <option value="1918">1918</option>
+  <option value="1917">1917</option>
+  <option value="1916">1916</option>
+  <option value="1915">1915</option>
+  <option value="1914">1914</option>
+  <option value="1913">1913</option>
+  <option value="1912">1912</option>
+  <option value="1911">1911</option>
+  <option value="1910">1910</option>
+  <option value="1909">1909</option>
+  <option value="1908">1908</option>
+  <option value="1907">1907</option>
+  <option value="1906">1906</option>
+  <option value="1905">1905</option>
   
   </select>
 <br><br>
  <input type="radio" name="gender" id="female" value="female">
  <label for="female">Female</label>
- 
+ <!-- \home\sony\Desktop\mid_termOOAD\facebook\WebContent\Images -->
  <input type="radio" name="gender" id="male" value="male">
   <label for="male">Male</label>
   <br><br>
-  <input type="image" src="Images\b1.png" alt="Create an account" width="260" height="65"><br></form>
+  <input type="image" src="Images\b1.png" alt="Create an account" width="260" height="65"><br>
+</form>
 </div>
 </body>
 </html>
+
+
