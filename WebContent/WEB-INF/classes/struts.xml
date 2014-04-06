@@ -23,7 +23,15 @@
             <result name="failure">/login.jsp</result>
             
       </action>
-	
+	 <action name="signUp" class="edu.iiitb.facebook.action.SignUp" method="signUp">
+            <result name="success">fillOutInfo.jsp</result>
+            <result name="failure">/login.jsp</result>
+            
+      </action>
+	<action name="fillOutInfo" class="edu.iiitb.facebook.action.SignUp" method="fillOutInfo">
+            <result name="success">addProfilePic.jsp</result>
+          <result name="failure">/fillOutInfo.jsp</result>
+     </action>
 	
 	<action name="About" class="edu.iiitb.facebook.action.aboutAction" method="retreiveAboutInfo">
             <result name="success" type="tiles">aboutLayout</result>
