@@ -22,6 +22,136 @@ z-index:-1;
 }
 </style>
 <head>
+<script  type="text/javascript">
+function validateForm()
+{
+var x=document.forms["signUpForm"]["fname"].value;
+var email=document.forms["signUpForm"]["email"].value;
+var atpos=email.indexOf("@");
+var dotpos=email.lastIndexOf(".");
+
+if (x==null || x=="")
+  {
+  alert("Please provide your first name");
+  return false;
+  }
+if( document.signUpForm.lname.value == "" )
+{
+  alert( "Please provide your last name!" );
+  document.signUpForm.lname.focus() ;
+  return false;
+}
+
+if( document.signUpForm.email.value == "" )
+{
+  alert( "Please provide your Email!" );
+  document.signUpForm.email.focus() ;
+  return false;
+}
+if (atpos<1 || dotpos<atpos+2 || dotpos+2>=email.length)
+  {
+  alert("Not a valid e-mail address");
+  return false;
+  }
+
+if( document.signUpForm.reEnteredEmail.value == "" )
+{
+  alert( "Please re-enter your email id!" );
+  document.signUpForm.reEnteredEmail.focus();
+  return false;
+}
+if( document.signUpForm.password.value == "" )
+{
+  alert( "Please provide your password!" );
+  document.signUpForm.password.focus();
+  return false;
+}
+if( document.signUpForm.day.value == "-1" )
+{
+  alert( "Please provide day of your date of birth!" );
+  document.signUpForm.day.focus() ;
+  return false;
+}
+if( document.signUpForm.month.value == "-1" )
+{
+  alert( "Please provide month of your date of birth!" );
+  document.signUpForm.month.focus();
+  return false;
+}
+if( document.signUpForm.year.value == "-1" )
+{
+  alert( "Please provide year of your date of birth!" );
+  document.signUpForm.year.focus();
+  return false;
+}
+return( true );
+}
+var pass_strength;
+
+function IsEnoughLength(str,length)
+{
+	if ((str == null) || isNaN(length))
+		return false;
+	else if (str.length < length)
+		return false;
+	return true;
+	
+}
+
+function HasMixedCase(passwd)
+{
+	if(passwd.match(/([a-z].*[A-Z])|([A-Z].*[a-z])/))
+		return true;
+	else
+		return false;
+}
+
+function HasNumeral(passwd)
+{
+	if(passwd.match(/[0-9]/))
+		return true;
+	else
+		return false;
+}
+
+function HasSpecialChars(passwd)
+{
+	if(passwd.match(/.[!,@,#,$,%,^,&,*,?,_,~]/))
+		return true;
+	else
+		return false;
+}
+
+
+function CheckPasswordStrength(pwd)
+{
+	if (IsEnoughLength(pwd,14) && HasMixedCase(pwd) && HasNumeral(pwd) && HasSpecialChars(pwd))
+		pass_strength = "<b><font style='color:olive'>Very strong</font></b>";
+	else if (IsEnoughLength(pwd,8) && HasMixedCase(pwd) && (HasNumeral(pwd) || HasSpecialChars(pwd)))
+		pass_strength = "<b><font style='color:Blue'>Strong</font></b>";
+	else if (IsEnoughLength(pwd,8) && HasNumeral(pwd))
+		pass_strength = "<b><font style='color:Green'>Good</font></b>";
+	else
+		pass_strength = "<b><font style='color:red'>Weak</font></b>";
+
+	document.getElementById('pwd_strength').innerHTML = pass_strength;
+}
+function matchEmail(){
+	 var email1 = document.getElementById("email").value;
+	    var reEnteredEmail = document.getElementById("reEnteredEmail").value;
+	    if (email1 != reEnteredEmail) {
+            document.getElementById("emailMatchError").innerHTML = "email does not match";
+            return false;
+        }
+        else {
+            document.getElementById("emailMatchError").innerHTML = "email matches";
+            return true;
+        }
+	    
+}
+
+</script>
+
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <link rel="shortcut icon" href="Images\favicon.ico">
 <title>Welcome to Facebook</title>
@@ -51,15 +181,21 @@ z-index:-1;
   <div id="content" style="position:absolute; background-color:#eeeff4;height:1000px;width:1500px;left:700px;top:120px">
  <h1><b> Create an account</b></h1>
 <h3>It's free and always will be.</h3>
-<form action="signUp" method="post">
+<form action="signUp" name="signUpForm" onsubmit="return validateForm()" method="post">
 
 <br>
 <br>
    <input type="text" name="fname" placeholder="First Name" size="22" style="height:39px">
    <input type="text" name="lname" placeholder="Last Name" size="21" style="height:39px"><br><br>
-   <input type="text" name="email" placeholder="Your email address" size="50" style="height:39px"><br><br>
-  <input type="text" name="reEnteredEmail" placeholder="Re-enter email address" size="50" style="height:39px"><br><br>
-  <input type="password" name="password" placeholder="New Password" size="50" style="height:39px"><br><br>
+   <input type="text" name="email" id="email" placeholder="Your email address" size="50" style="height:39px"><br><br>
+  <input type="text" name="reEnteredEmail" id="reEnteredEmail" onkeyup='matchEmail();' placeholder="Re-enter email address" size="50" style="height:39px">
+  
+  <span id="emailMatchError"></span><br>
+  <br>
+  <input type="password" name="password" onkeyup='CheckPasswordStrength(this.value);' placeholder="New Password" size="50" style="height:39px"><br>
+  <div id='pwd_strength'></div>
+  
+  <br>
  
 <label for="birthday">Birthday</label>
 <br><br>
