@@ -1,5 +1,7 @@
 package edu.iiitb.facebook.action;
 
+import java.util.Date;
+
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 
@@ -33,7 +35,9 @@ public class statusAction {
 				} else {
 					// System.out.println("inside else");
 					int profileid = (Integer) session.getAttribute("profileId");
-		String timeStamp = new SimpleDateFormat("dd/MM/yyyy_HH:mm:ss").format(Calendar.getInstance().getTime());
+					SimpleDateFormat formatter = new SimpleDateFormat("YYYY-MM-dd HH:mm:ss");
+		String timeStamp =formatter.format( Calendar.getInstance().getTime());
+		
 		statusModel.addStatus(status,timeStamp,profileid);
 		return "success";
 				}

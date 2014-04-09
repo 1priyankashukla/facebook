@@ -13,7 +13,7 @@
 			<tr>
 
 				<td width="80"><a href=""><img
-						src="Images/sanj.jpg" height="60" width="60"></a></td>
+						src="image?photoId=<s:property value="photoId" />" height="60" width="60"></a></td>
 				<td ><a href="" class="h2"><span class="hover"><s:property
 								value="userName" /></span></a></td>
 

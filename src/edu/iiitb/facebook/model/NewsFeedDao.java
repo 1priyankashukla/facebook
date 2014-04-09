@@ -1,6 +1,8 @@
 package edu.iiitb.facebook.model;
 
+import java.io.InputStream;
 import java.sql.Connection;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
@@ -27,6 +29,11 @@ public class NewsFeedDao {
 			while (resultSet.next()) {
 				comment=new Comment();
 				System.out.println("In comment Date="+resultSet.getDate("commentTime")+"");
+				comment.setTime(resultSet.getTime("commentTime")/*.getHours()*//*+":"+resultSet.getDate("commentTime").getMinutes()+":"+resultSet.getDate("commentTime").getSeconds()*/+"");
+				//System.out.println("Comment Time "+comment.getTime()+" newTime"+convertTime(comment.getTime()));
+				
+				comment.setTime(convertTime(comment.getTime()));
+				comment.setDate(convertDate(resultSet.getDate("commentTime")+""));
 				comment.setDescription(resultSet.getString("description"));
 				postOwner=new PostOwner();
 				postOwner=getOwnerDetails(resultSet.getInt("profileId"));
@@ -47,7 +54,80 @@ public class NewsFeedDao {
 		DB.close(connection);
 		return comments;
 	}
+	public static String convertDate(String oldDate)
+	{
+		String newDate=" ";
+		String ddMM[]=oldDate.split("-");
+		switch(Integer.parseInt(ddMM[1]))
+		{
+		case 1:newDate+="January";
+		break;
+		case 2:newDate+="February";
+		break;
+		case 3:newDate+="March";
+		break;
+		case 4:newDate+="April";
+		break;
+		case 5:newDate+="May";
+		break;
+		case 6:newDate+="June";
+		break;
+		case 7:newDate+="July";
+		break;
+		case 8:newDate+="August";
+		break;
+		case 9:newDate+="September";
+		break;
+		case 10:newDate+="October";
+		break;
+		case 11:newDate+="November";
+		break;
+		case 12:newDate+="December";
+		break;
 
+		}
+		if(ddMM[2].charAt(0)!='0')
+		newDate+=" "+ddMM[2];
+		else 
+		newDate+=" "+ddMM[2].charAt(1);
+			
+		return newDate;
+	}	
+	public static InputStream getPic(int photoId)
+	{
+		ResultSet resultSet= null;
+		String query;
+		InputStream binaryStream=null;
+		query= "select photo from Photo where photoId="+photoId;
+		Connection connection;
+		connection= DB.getConnection();
+		resultSet = DB.readFromDB(query, connection);
+		try {
+			while (resultSet.next()) {
+
+			binaryStream = resultSet.getBinaryStream("photo");
+
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return binaryStream;
+	}
+	public static String convertTime(String time)
+	{
+		String newTime=" ";
+		String hhMM[]=time.split(":");
+		if(Integer.parseInt(hhMM[0])>12)
+		{
+			newTime+=(Integer.parseInt(hhMM[0])-12)+":"+hhMM[1]+"pm";
+		}
+		else
+			newTime+=hhMM[0]+":"+hhMM[1]+"am";
+			
+		return newTime;
+	}
+	
 	public static void insertComment(int userId,String description, int postId)
 	{
 		
@@ -60,6 +140,7 @@ public class NewsFeedDao {
 	      
 	      String sql = "INSERT INTO Comment (profileId, postId, commentTime, description) " +
 	                   "VALUES ("+userId+", "+postId+", '"+dateFormat.format(date).toString()+"', '"+description+"');"; 
+	      System.out.println(sql);
 	      stmt.executeUpdate(sql);
 	      stmt.close();
 			con.close();
@@ -202,6 +283,7 @@ public class NewsFeedDao {
 		return peopleLiked;
 	}
 
+
 	public static ArrayList<String> getPostLikes(int postId, int userId)
 	{
 		ArrayList<String> peopleLiked=new ArrayList<String>();
@@ -269,9 +351,9 @@ public class NewsFeedDao {
 		ResultSet resultSet= null;
 		String query;
 		query= "SELECT postId,owner,type,time,statusId,photoId,pollId FROM Post " +
-				"where owner in (select userId2 as friend from Friendship where areFriends=1 and userId1="+userId+")" +
+				"where owner in (select userId2 as friend from Friendship where areFriends='Y' and userId1="+userId+")" +
 				" or owner="+ userId+
-				" or owner in (select userId1 as friend from Friendship where areFriends=1 and userId2="+userId+")" +
+				" or owner in (select userId1 as friend from Friendship where areFriends='Y' and userId2="+userId+")" +
 				" order by postId Desc limit 10;";
 		System.out.println(query);
 		Connection connection;
@@ -279,23 +361,31 @@ public class NewsFeedDao {
 		resultSet = DB.readFromDB(query, connection);
 		try {
 			while (resultSet.next()) {
+				System.out.println("here");
 				post=new Post();
 				post.setPostId(resultSet.getInt("postId"));
+				System.out.println("Post ID"+resultSet.getInt("postId"));
 				post.setPeopleLiked(getPostLikes(resultSet.getInt("postId"), userId));
 				if(post.getPeopleLiked().contains("You"))
 					post.setYouLiked(true);
 				post.setLikeCount(post.getPeopleLiked().size());
+				System.out.println("Like count "+post.getPeopleLiked().size());
 				post.setPostOwner(getOwnerDetails(resultSet.getInt("owner")));
-				post.setUpdatedTime(resultSet.getDate("time")+" "+resultSet.getTime("time")+"");
+				post.setPostTime(convertTime(resultSet.getTime("time")+""));
+				post.setPostDate(convertDate(resultSet.getDate("time")+""));
+				System.out.println(post.getPostDate());
 				post.setType(resultSet.getString("type"));
+				System.out.println(resultSet.getString("type"));
 				if(post.getType().equals("text"))
 				{
 				post.setUserStatus(getUserStatus(resultSet.getInt("statusId")));
+				System.out.println("text");
 				}
+				System.out.println(post.getUserStatus());
+
 				post.setComment(getComments(resultSet.getInt("postId"),1));
 				post.setCommentCount(post.getComment().size());
 				posts.add(post);
-				
 			}
 			
 		}catch (SQLException e) {
@@ -336,13 +426,17 @@ public class NewsFeedDao {
 		PostOwner postOwner=new PostOwner();
 		ResultSet resultSet= null;
 		String query;
-		query= "select firstName,lastName from Profile where profileId="+ownerId; 
+		query= "select firstName,lastName,profilePicId from Profile where profileId="+ownerId; 
 		Connection connection;
 		connection= DB.getConnection();
 		resultSet = DB.readFromDB(query, connection);
 		try {
 			while (resultSet.next()) {
+				if(resultSet.getString("lastName")!=null)
 				postOwner.setUserName(resultSet.getString("firstName")+" "+resultSet.getString("lastName"));
+				else
+					postOwner.setUserName(resultSet.getString("firstName"));
+				postOwner.setPhotoId(resultSet.getInt("profilePicId"));
 			}
 			
 		}catch (SQLException e) {

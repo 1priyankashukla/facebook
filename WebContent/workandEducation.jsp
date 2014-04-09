@@ -20,6 +20,15 @@ function showTextBoxes(){
 
 	
 	}
+	
+	
+function handle(e){
+    if(e.keyCode === 13){
+        alert("Enter was pressed was presses");
+    }
+
+    return false;
+}
 
 
 function inputFocus(i){
@@ -30,9 +39,21 @@ function inputBlur(i){
 }
 
 </script>
+<style> 
+ 
+.scroll2
+{
+
+width:640px;
+height:240px;
+overflow:scroll;
+
+}
+ </style> 
 
 </head>
 <body onload="hideTextBoxes()">
+<div class="scroll2">
 <b>Work and Education</b> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
@@ -40,9 +61,30 @@ function inputBlur(i){
 <input type="submit" value="Edit" id="Edit" onclick="showTextBoxes()"/>
 
 <br/>
-<form action="workandEducation">
+<form action="saveWork">
 <INPUT TYPE="text" NAME="work" value="where have you worked?" title="workandEducation" id="work" onfocus="inputFocus(this)" onblur="inputBlur(this)" onkeypress="submitOnEnter(this, event)"/><br/><br/>
+</form>
+
+<s:iterator value="workList">
+<br/>
+	   <s:property value="work" />
+	
+	    <a href="<s:url action='editWork1'><s:param name="companyName"><s:property value="work" /></s:param> 
+	   </s:url>">edit</a><br/>
+</s:iterator>
+
+<form action="saveEducation">
 <INPUT TYPE="text" NAME="education" value="where did you go to College?" id="edu" title="workandEducation" onfocus="inputFocus(this)" onblur="inputBlur(this)" onkeypress="submitOnEnter(this, event)"/>
 </form>
+
+<s:iterator value="educationList">
+<br/>
+	   <s:property value="education" />
+<a href="<s:url action='editEducation1'><s:param name="schoolName"><s:property value="education" /></s:param> 
+	   </s:url>">edit</a><br/>
+</s:iterator>
+
+</div>
+
 </body>
 </html>

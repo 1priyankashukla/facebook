@@ -6,22 +6,37 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Insert title here</title>
+<style> 
+ 
+.scroll1
+{
+
+width:640px;
+height:130px;
+overflow:scroll;
+
+}
+ </style> 
 </head>
 <body onload="place.close()">
-<a href="javascript:window.open('newPlace.jsp', 'place', 'width=1000,height=500');">Add Place</a>
-<br/>
+<div class="scroll1">
 <h3>Places Lived</h3>
 <s:iterator value="placesList">
+	<br/>
+	 <s:property value="whereto" />
+	  <!-- ********************************Shubham Code Start ***************************************-->
+	   <a href="<s:url action='editLocation1'><s:param name="location"><s:property value="whereto" /></s:param> 
+	   <s:param name="citytype"><s:property value="address" /></s:param></s:url>">edit</a><br/>
+	  <!--   <a href="javascript:window.open('editPlace.jsp',EPLACE);">EDIT</a>-->
+	 
+	  	<!-- ********************************Shubham Code End ***************************************--> 
 	
-	 <s:property value="whereto" /><br/>
-	   <s:property value="address" /><br/>
-	   <s:property value="from" />
-	   
-	   
-	
-</s:iterator>
+	 </s:iterator>
+<br/>
+<a href="javascript:window.open('newPlace.jsp', 'place', 'width=1000,height=500');">Add Place</a>
 
 
+</div>
 
 </body>
 </html>

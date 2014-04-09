@@ -13,6 +13,13 @@ public class Profile {
 	Date birthDate;
 	String aboutMe;
 	int profilePicAlbumId;
+	int profilePicId;
+	public int getProfilePicId() {
+		return profilePicId;
+	}
+	public void setProfilePicId(int profilePicId) {
+		this.profilePicId = profilePicId;
+	}
 	String religion;
 	int coverPicAlbumId;
 	int schoolCount;
@@ -20,6 +27,15 @@ public class Profile {
 	String homeTown;
 	String currentCity;
 	int workplaceCount;
+	String isFriend;
+	
+	
+	public String getIsFriend() {
+		return isFriend;
+	}
+	public void setIsFriend(String isFriend) {
+		this.isFriend = isFriend;
+	}
 	String relationshipStatus;
 	Blob profileImage;
 	public Blob getProfileImage() {

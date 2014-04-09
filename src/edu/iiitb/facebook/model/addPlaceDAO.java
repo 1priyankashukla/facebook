@@ -44,5 +44,28 @@ public class addPlaceDAO {
 		return placesList;
 	}
 
+	
+/* ********************************Shubham Code Start *************************************** */
+	
+	/*UPDATE `facebook`.`placeMovement` SET `WhereTo`='Mumbai' WHERE `place_id`='1';*/
+	public static int editPlace(String whereto,String address,int profileId) {
+		
+	/*	String updateSQL="UPDATE  placeMovement "
+				+"SET WhereTo='"+whereto+"' WHERE  profileId='"+profileId+"';";
+		*/
+	String updateSQL="UPDATE  placeMovement "
+				+"SET WhereTo='"+whereto+"' WHERE address='"+address+"' AND profileId='"+profileId+"';";
+	
+	/*	String insertSQL = "insert into  placeMovement"
+				+ "(whereTo, address, story, date, fromPlace, profileId) " + "values('" + whereto
+				+ "', '" + address + "', '" + story + "', '" + when + 
+				"', '" + from + "',"+profileId+");";
+		*/
+		System.out.println(updateSQL);
+		return DB.update(updateSQL);
+	}
+	
+	/* ********************************Shubham Code End *************************************** */
+
 
 }

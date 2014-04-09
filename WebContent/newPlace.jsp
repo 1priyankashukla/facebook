@@ -6,26 +6,40 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Add Place</title>
+
 </head>
 <body>
 <center>
 <h3> MOVED </h3>
 <form action="addPlace">
-	<label for="wherelabel">WhereTo</label>&nbsp;
-<INPUT TYPE="text" NAME="whereto"/><br/><br/>
-<label for="addresslabel">Address</label>&nbsp;
-<INPUT TYPE="text" NAME="address"/><br/><br/>
-<label for="fromlabel">From</label>&nbsp;
-<INPUT TYPE="text" NAME="from"/><br/><br/>
-<label for="whenlabel">When</label>&nbsp;
-<INPUT TYPE="text" NAME="when"/><br/><br/>
-<label for="storylabel">Story</label>&nbsp;
-<INPUT TYPE="text" NAME="story"/><br/><br/>
-
+<table border="0" cellpadding="5" width="300">
+<tr>
+	<td><label for="wherelabel">WhereTo</label>&nbsp;</td>
+	<td><INPUT TYPE="text" NAME="whereto"/></td>
+</tr>
+<tr>
+	<td><label for="addresslabel">Address</label>&nbsp;</td>
+	<td><INPUT TYPE="text" NAME="address"/></td>
+</tr>
+<tr>
+	<td><label for="fromlabel">From</label>&nbsp;</td>
+	<td><INPUT TYPE="text" NAME="from"/></td>
+</tr>
+<tr>
+	<td><label for="whenlabel">When</label>&nbsp;</td>
+	<td><INPUT TYPE="text" NAME="when"/></td>
+</tr>
+<tr>
+	<td><label for="storylabel">Story</label>&nbsp;</td>
+	<td><INPUT TYPE="text" NAME="story"/></td>
+	
+</tr>
+</table>
 <input type="submit" value="Save" id="save"/>&nbsp;&nbsp;
-<input type="button"" onclick="place.close()" value="Cancel" id="cancel"/>
+<input type="button" onclick="self.close()" value="Cancel" id="cancel"/>
 
 </form>
+
 </center>
 
 

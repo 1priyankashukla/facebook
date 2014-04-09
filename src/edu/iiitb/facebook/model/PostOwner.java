@@ -3,7 +3,8 @@ package edu.iiitb.facebook.model;
 public class PostOwner {
 	private int userId;
 	private String userName;
-
+	private int photoId;
+	
 	public String getUserName() {
 		return userName;
 	}
@@ -19,4 +20,13 @@ public class PostOwner {
 	public void setUserId(int userId) {
 		this.userId = userId;
 	}
+
+	public int getPhotoId() {
+		return photoId;
+	}
+
+	public void setPhotoId(int photoId) {
+		this.photoId = photoId;
+	}
+
 }

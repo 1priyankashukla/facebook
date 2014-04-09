@@ -11,6 +11,7 @@ import edu.iiitb.facebook.util.DB;
 public class ownNewsModel {
 	
 	public static ArrayList<ownNewsAction> getOwnNews(int profileId){
+		System.out.println("inside Model");
 		ArrayList<ownNewsAction> ownNewsList = new ArrayList<ownNewsAction>();
 		ResultSet resultSet = null;
 		ResultSet resultSet1 = null;
@@ -31,14 +32,15 @@ public class ownNewsModel {
 				ownNewsAction ownNews=new ownNewsAction();
 				String type=resultSet.getString("type");
 				
-				if(type.equalsIgnoreCase("status")){
+				if(type.equalsIgnoreCase("text")){
 					int statusId=resultSet.getInt("statusId");
 					String query1 = "select description, updateTime from UserStatus where userStatusId=" +statusId+";";
 					resultSet2 = DB.readFromDB(query1, connection);
 					while(resultSet2.next()){
 						ownNews.setStatus(resultSet2.getString("description"));
 						ownNews.setTime(resultSet2.getString("updateTime"));
-						ownNews.setType("status");
+						System.out.println("inside model :::"+ownNews.getTime());
+						ownNews.setType("text");
 						String displayString=firstName;
 						if(lastName!=null)
 							displayString=displayString.concat(" ").concat(lastName);

@@ -1,6 +1,8 @@
 package edu.iiitb.facebook.model;
 
 import java.sql.Connection;
+
+import java.util.Date;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
@@ -19,7 +21,7 @@ public class statusModel {
 		System.out.println("statusid:::"+statusid);
 		//insert into post Table
 		String insertSQL1 = "insert into Post "
-				+ "(owner,type,time,statusId) " + "values("+profileId+",'status','"+timestamp+"',"+statusid+");";
+				+ "(owner,type,time,statusId) " + "values("+profileId+",'text','"+timestamp+"',"+statusid+");";
 		System.out.println(insertSQL1);
 		return DB.update(insertSQL1);
 	}

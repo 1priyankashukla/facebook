@@ -9,7 +9,8 @@ public class Post {
 	private PostOwner postOwner;
 	private String userStatus;
 	private String type;
-	private String updatedTime;
+	private String postDate;
+	private String postTime;
 	private ArrayList<String> peopleLiked;
 	private boolean youLiked;
 	private ArrayList<Comment> comment;
@@ -20,11 +21,11 @@ public class Post {
 		this.userStatus = userStatus;
 	}
 
-	public String getUpdatedTime() {
-		return updatedTime;
+	public String getPostTime() {
+		return postTime;
 	}
-	public void setUpdatedTime(String updatedTime) {
-		this.updatedTime = updatedTime;
+	public void setPostTime(String postTime) {
+		this.postTime = postTime;
 	}
 	public PostOwner getPostOwner() {
 		return postOwner;
@@ -74,6 +75,12 @@ public class Post {
 	}
 	public void setCommentCount(int commentCount) {
 		this.commentCount = commentCount;
+	}
+	public String getPostDate() {
+		return postDate;
+	}
+	public void setPostDate(String postDate) {
+		this.postDate = postDate;
 	}
 	
 }

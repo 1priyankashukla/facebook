@@ -4,12 +4,19 @@
 	"http://struts.apache.org/dtds/struts-2.0.dtd">
 <struts>
 <constant name="struts.devMode" value="true" />
+<constant name="struts.convention.default.parent.package"
+		value="default" />
 
-   <package name="facebook" extends="struts-default">
+   <package name="facebook" extends="struts-default,json-default">
      	<result-types>
 			<result-type name="tiles" class="org.apache.struts2.views.tiles.TilesResult" />
-		</result-types>
-   
+		<result-type name="imageResult"	class="com.mkyong.image.result.CustomImageBytesResult" />
+				
+		
+</result-types>
+
+
+ 
 	<action name="profileTempAction" class="edu.iiitb.facebook.action.statusAction" method="tempReturnSuccess">
             <result name="success" type="tiles">profileLayout</result>
             <result name="failure">/login.jsp</result>
@@ -19,17 +26,21 @@
 	
 	
 	  <action name="login" class="edu.iiitb.facebook.action.LoginAction" method="doLogin">
-            <result name="success" type="tiles">baseLayout</result>
+            <result name="success" type="tiles">homeLayout</result>
             <result name="failure">/login.jsp</result>
             
       </action>
 	 <action name="signUp" class="edu.iiitb.facebook.action.SignUp" method="signUp">
-            <result name="success">fillOutInfo.jsp</result>
+            <result name="success">/fillOutInfo.jsp</result>
             <result name="failure">/login.jsp</result>
             
       </action>
+<action name="header" class="edu.iiitb.facebook.action.HeaderAction" method="execute">
+            <result name="success" >/header2.jsp</result>
+            <result name="failure">/login.jsp</result>
+            </action>
 	<action name="fillOutInfo" class="edu.iiitb.facebook.action.SignUp" method="fillOutInfo">
-            <result name="success">addProfilePic.jsp</result>
+             <result name="success" type="tiles">baseLayout</result>
           <result name="failure">/fillOutInfo.jsp</result>
      </action>
 	
@@ -48,10 +59,22 @@
             <result name="failure">/ownNews.jsp</result>
 	</action>
 	
-     <action name="displayFullConversation" class="edu.iiitb.facebook.action.MessageAction" method="displayFullConversation">
-    <result name="success">/viewMessages.jsp</result>        
-   </action>
+    
    
+<action  name="sendFriendRequest" method="execute" class="edu.iiitb.facebook.action.SendFriendRequest" >
+	  	<result name="success" type="chain" >Search</result>
+ </action>
+	
+	<action name="image" class="edu.iiitb.facebook.action.ImageAction" method="execute">
+            <result name="success" type="stream">
+  				<param name="contentType">image/jpeg</param>
+  				<param name="inputName">imageStream</param>
+  				<param name="contentDisposition">image.jpeg</param>
+  				<param name="bufferSize">1024</param>
+			</result>  
+            <result name="login">/Login.jsp</result>
+	</action>
+	
    
    	<action name="birthday" class="edu.iiitb.facebook.action.BirthdayFeedAction" method="birthdayNotification">
             <result name="success">/birthdayNotification.jsp</result>
@@ -62,6 +85,22 @@
             <result name="success">/birthdayNotification.jsp</result>
            
 	</action>
+<action name="saveWork" class="edu.iiitb.facebook.action.workAndEducation" method="storeWork">
+            <result name="success" type="tiles">aboutLayout</result>
+           
+	</action>
+<action name="saveEducation" class="edu.iiitb.facebook.action.workAndEducation" method="storeEducation">
+            <result name="success" type="tiles">aboutLayout</result>
+           
+	</action>
+	
+	
+	<action name="getWorkAndEducation" class="edu.iiitb.facebook.action.workAndEducation" method="retreiveWorkAndEducation">
+            <result name="success">/workandEducation.jsp</result>
+           
+	</action>
+	
+	
 	
 	<action name="addPlace" class="edu.iiitb.facebook.action.placeAction" method="addNewPlace">
             <result name="success" type="tiles">aboutLayout</result>
@@ -73,15 +112,192 @@
             <result name="success">/placesLived.jsp</result>
            
 	</action>
+<action name="newsFeed" class="edu.iiitb.facebook.action.NewsFeedAction" method="getPost">
+            <result name="success">/newsFeed.jsp</result>
+            <result name="login">/Login.jsp</result>
+    </action>
+    
+    <action name="newsFeed2" class="edu.iiitb.facebook.action.NewsFeedAction" method="getPost">
+            <result name="success" type="tiles">newsFeed</result>
+            <result name="login">/Login.jsp</result>
+    </action>
+    
+    
+    
+   <action name="insertLike" class="edu.iiitb.facebook.action.NewsFeedAction" method="likeAction">
+            <result name="login">/Login.jsp</result>
+            <result name="success" type="chain">newsFeed2</result>
+    </action>
+   <action name="deleteLike" class="edu.iiitb.facebook.action.NewsFeedAction" method="unlikeAction">
+            <result name="success" type="chain">newsFeed2</result>
+            <result name="login">/Login.jsp</result>
+    </action>
+   <action name="insertLikeComment" class="edu.iiitb.facebook.action.NewsFeedAction" method="likeCommentAction">
+            <result name="success" type="chain">newsFeed2</result>
+            <result name="login">/Login.jsp</result>
+    </action>
+   <action name="deleteLikeComment" class="edu.iiitb.facebook.action.NewsFeedAction" method="unlikeCommentAction">
+            <result name="success" type="chain">newsFeed2</result>
+            <result name="login">/Login.jsp</result>
+    </action>
+    
+   <action name="showLikes" class="edu.iiitb.facebook.action.NewsFeedAction" method="showLikesAction">
+            <result name="success">showLikes.jsp</result>
+            <result name="login">/Login.jsp</result>
+    </action>
+   <action name="showCommentLikes" class="edu.iiitb.facebook.action.NewsFeedAction" method="showCommentLikesAction">
+            <result name="success">showLikes.jsp</result>
+            <result name="login">/Login.jsp</result>
+    </action>
+   <action name="submitComment" class="edu.iiitb.facebook.action.NewsFeedAction" method="submitComment">
+            <result name="success" type="chain">newsFeed2</result>
+            <result name="login">/Login.jsp</result>
+    </action>
 	
-		
+	<action name="basicInfo" class="edu.iiitb.facebook.action.basicInfoAction" method="retrieveBasicInfo">
+            <result name="success">/basicInfo.jsp</result>
+           
+	</action>
+	
+	
+	<action name="relStatusList" class="edu.iiitb.facebook.action.basicInfoAction" method="retrieveRelStatusList">
+             <result name="success" type="tiles">addRelStatus</result>
+           
+	</action>
+	
+	<action name="saveRelStatus" class="edu.iiitb.facebook.action.basicInfoAction" method="saveRelStatus">
+            <result name="success" type="tiles">aboutLayout</result>
+           
+	</action>
+	
+	<action name="gender_temp" class="edu.iiitb.facebook.action.basicInfoAction" method="gender_temp">
+            <result name="gender" type="tiles">addGender</result>
+           	<result name="interests" type="tiles">addInterestedIn</result>
+           
+	</action>
+	
+	<action name="saveGender" class="edu.iiitb.facebook.action.basicInfoAction" method="saveGender">
+            <result name="success" type="tiles">aboutLayout</result>
+           
+	</action>
+	
+	<action name="saveInterestedIn" class="edu.iiitb.facebook.action.basicInfoAction" method="saveInterestedIn">
+            <result name="success" type="tiles">aboutLayout</result>
+           
+	</action>
+	
+	
+		<action name="temp" class="edu.iiitb.facebook.action.TempAction" method="temp">
+            <result name="success" type="tiles">homeLayout</result>
+            <result name="failure">/login.jsp</result>
+            
+      </action>
+   
 	 <action name="Search" class="edu.iiitb.facebook.action.SearchAction"
 			method="temp">
 			<result name="success" type="tiles">search</result>
-			<result name="result">search</result>
 		</action>
+		
+		
+		   <action name="basicMessages" class="edu.iiitb.facebook.action.MessageAction" method="loadBasicMessagePage"> 
+   <result name="success" type="tiles">messageLayout</result> </action>
+	
+	
+	
+   <action name="showConversationWithSelectedUser" class="edu.iiitb.facebook.action.MessageAction" method="loadConversationWithSelectedUser">
+   <result name="success" type="tiles">messageLayout</result>        
+   </action>    	
+      	
+      	
+   <action name="replyToSelectedConversation" class="edu.iiitb.facebook.action.MessageAction" method="storeReplyToSelectedConversation">
+   <result name="success" type="tiles">messageLayout</result>        
+   </action> 
+
+<!-- ********************************Shubham Code Start ***************************************-->
+<action name="editLocation1" class="edu.iiitb.facebook.action.placeAction" method="editLocation1">
+            <result name="success" type="tiles">editLocation</result>
+            <result name="failure">/login.jsp</result>
+            
+      </action>
+	<action name="editLocation2" class="edu.iiitb.facebook.action.placeAction" method="editLocation2">
+            <result name="success" type="tiles">aboutLayout</result>
+            <result name="failure">/login.jsp</result>
+            
+      </action>
+    
+    <action name="loadCoverPic" class="edu.iiitb.facebook.action.picAction" method="loadCoverPic">
+            <result name="success">/coverPic.jsp</result>
+            <result name="failure">/login.jsp</result>
+            
+      </action>
+    
+    
+      
+      <action name="editWork1" class="edu.iiitb.facebook.action.workAndEducation" method="editWork1">
+            <result name="success" >/editWork.jsp</result>
+            <result name="failure">/login.jsp</result>
+            
+      </action>
+      
+       <action name="editWork2" class="edu.iiitb.facebook.action.workAndEducation" method="editWork2">
+            <result name="success" type="tiles">aboutLayout</result>
+            <result name="failure">/login.jsp</result>
+            
+      </action>
+      
+       <action name="editEducation1" class="edu.iiitb.facebook.action.workAndEducation" method="editEducation1">
+            <result name="success" >/editEducation.jsp</result>
+            <result name="failure">/login.jsp</result>
+            
+      </action>
+      
+       <action name="editEducation2" class="edu.iiitb.facebook.action.workAndEducation" method="editEducation2">
+            <result name="success" type="tiles">aboutLayout</result>
+            <result name="failure">/login.jsp</result>
+            
+      </action>
+	
+	<!--  **********************************Shubham code End********************************* -->
+	
+	<!-- after 1st demo -->
+		<action name="birthdayList" class="edu.iiitb.facebook.action.BirthdayFeedAction"
+			method="birthdayNotification">
+			<result name="success">/birthdayList.jsp</result>
+		</action>
+
+		<action name="postWish" class="edu.iiitb.facebook.action.BirthdayFeedAction"
+			method="postWish">
+			<result name="success">/birthdayList.jsp</result>
+		</action>
+
+		<action name="eventList" class="edu.iiitb.facebook.action.EventDisplayAction"
+			method="eventDisplay">
+			<result name="success">/eventList.jsp</result>
+		</action>
+
+<action name="postWishEvent" class="edu.iiitb.facebook.action.BirthdayFeedAction"
+			method="postWish">
+			<result name="success">/eventList.jsp</result>
+		</action>
+
+		<action name="createEvent" class="edu.iiitb.facebook.action.CreateEventAction"
+			method="createEventDetails">
+			<result name="success">/eventCreate.jsp</result>
+		</action>
+		
+		<action name="eventPage" class="edu.iiitb.facebook.action.EventPageAction"
+			method="eventPageDisplay">
+			<result name="success">/eventPage.jsp</result>
+		</action>
+		<action name="eventRsvp" class="edu.iiitb.facebook.action.EventPageAction"
+			method="eventJoinStatus">
+			<result name="success">/eventList.jsp</result>
+		</action>
+
+
+	
+	
    
-   
-	</package>
+</package>
   
 </struts>

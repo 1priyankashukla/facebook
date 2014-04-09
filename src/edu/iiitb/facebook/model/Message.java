@@ -1,4 +1,4 @@
-package edu.iiitb.facebook.model;
+package  edu.iiitb.facebook.model;
 
 import java.util.ArrayList;
 import java.sql.*;

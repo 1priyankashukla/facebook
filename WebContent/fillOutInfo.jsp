@@ -49,7 +49,7 @@
  &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
  &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
  &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; 
- <a href=addProfilePic.jsp> Skip</a>&nbsp;
+ <a href="<s:url action="fillOutInfo"/>"> Skip</a>&nbsp;
  <input type="image" src="Images\saveBtn.png" alt="Save & Continue" width="130" height="35">
 
 </form>

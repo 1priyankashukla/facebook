@@ -9,37 +9,47 @@
 <title>News Feed</title>
 <script type="text/javascript">
 function handleKeyPress(e,form){
-var key=e.keyCode || e.which;
+
+	var key=e.keyCode || e.which;
 if (key==13){
-/* 	document.myForm.action = "submitComment";
- */	document.getElementById("myForm").submit();
+ 
+document.getElementById("myForm").submit();
+ 
 }
 }
 </script>
 </head>
 <body>
-	<form id="myForm" action="submitComment">
+
+<br/>
+<br/>
+<br/>
+<br/>
+
+	<form id="myForm" action="submitComment" >
 		<table>
 			<tbody>
 				<tr>
-					<td class="scrollit"><s:iterator value="posts" >
+					<td class="scrollit"><s:iterator value="posts">
 
 							<table border="0" cellspacing="5" bordercolor="#eceff6"
 								bgcolor="#eceff6">
-	 							<tr>
+								<tr>
 									<td>
 										<table border="0" cellspacing="0" bgcolor="#ffffff"
 											width="560">
 											<tr>
 												<s:iterator value="postOwner">
 													<td rowspan="2" width="80"><a href=""><img
-															src="Images/sanj.jpg" height="60" width="60"></a></td>
+															src="image?photoId=<s:property value="photoId" />"
+															height="60" width="60"></a></td>
 													<td colspan="2"><a href="" class="nameFont"><span
 															class="hover"><s:property value="userName" /></span></a></td>
 												</s:iterator>
 											</tr>
 											<tr>
-												<td class="timeFont">At <s:property value="updatedTime" /></td>
+												<td class="timeFont"><s:property value="postDate" /> at
+													<s:property value="postTime" />.</td>
 											</tr>
 											<tr>
 												<td colspan="3"><s:property value="userStatus" /></td>
@@ -48,8 +58,8 @@ if (key==13){
 												<td colspan="3">
 													<table>
 														<tr height="20px">
-															<td><a
-																href="<s:url action='deleteLike' > <s:param name="index"><s:property value="postId" /></s:param></s:url>"
+															<td>
+															<a href="<s:url action='deleteLike' > <s:param name="index"><s:property value="postId" /></s:param></s:url>"
 																class="likeCommentFont"><span class="hover"><s:if
 																			test="youLiked">Unlike</s:if></span></a><a
 																href="<s:url action='insertLike' > <s:param name="index"><s:property value="postId" /></s:param></s:url>"
@@ -128,7 +138,8 @@ if (key==13){
 																	<s:iterator value="commentOwner">
 
 																		<td rowspan="2"><a href=""><img
-																				src="Images/sanj.jpg" height="35" width="35"></a></td>
+																				src="image?photoId=<s:property value="photoId" />"
+																				height="35" width="35"></a></td>
 																		<td><a href="" class="commentNameFont"><span
 																				class="hover"><s:property value="userName" /></span></a></td>
 																	</s:iterator>
@@ -139,8 +150,8 @@ if (key==13){
 																</tr>
 
 																<tr height="18">
-																	<td colspan="3" class="timeFont">March 22 at
-																		2:25pm . <a
+																	<td colspan="3" class="timeFont"><s:property
+																			value="date" /> at <s:property value="time" /> . <a
 																		href="<s:url action='deleteLikeComment' > <s:param name="commentIndex"><s:property value="commentId" /></s:param></s:url>"
 																		class="likeTextCommentFont"><span class="hover"><s:if
 																					test="youLiked">Unlike</s:if></span></a><a
@@ -152,8 +163,7 @@ if (key==13){
 																				class="likeOnCommentFont"><span class="hover"><img
 																					src="Images/like.jpg" height="17" width="17">
 																					<s:property value="likeCount" /></span></a>
-																		</s:if>
-																	</td>
+																		</s:if></td>
 																</tr>
 															</table>
 														</td>
@@ -162,27 +172,29 @@ if (key==13){
 											</s:if>
 											<tr>
 											<tr>
-												<td><a href=""><img src="Images/sanj.jpg"
+												<td><a href=""><img
+														src="image?photoId=<s:property value="photoId" />"
 														height="35" width="35"></a></td>
 												<td colspan="2">&nbsp;
-												<input type="text"
-													name="description"
-													onkeypress="handleKeyPress(event,this.form)"
-													placeholder="Write a comment..." class="resizedCommentBox" />
+												 <input type="text" name="description"	 placeholder="Write a comment..." class="resizedCommentBox" onkeypress="handleKeyPress(event,this.form)"/>
 												</td>
 											</tr>
-											
-			
+										
+										<tr>
+										<td><input type="hidden" name="postId1" value="<s:property value="postId"/> " /></td>
+												
+										</tr>
+										
 										</table>
-			
+
 									</td>
 								</tr>
-								
+
 							</table>
-						</s:iterator> </td>
+						</s:iterator></td>
 				</tr>
 			</tbody>
 		</table>
-		</form>
+	</form>
 </body>
 </html>

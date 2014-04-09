@@ -2,6 +2,9 @@ package edu.iiitb.facebook.action;
 
 import java.util.ArrayList;
 
+
+import java.util.Date;
+
 import javax.servlet.http.HttpSession;
 
 import org.apache.struts2.ServletActionContext;
@@ -38,6 +41,10 @@ public class ownNewsAction extends ActionSupport{
 		this.displayString = displayString;
 	}
 
+
+	
+
+	
 
 	public String getTime() {
 		return time;
@@ -80,6 +87,7 @@ public class ownNewsAction extends ActionSupport{
 
 
 	public String retrieveOwnNews(){
+		System.out.println("inside ownNewsAction");
 		//session changes
 				HttpSession session = ServletActionContext.getRequest().getSession(
 						false);
@@ -89,6 +97,10 @@ public class ownNewsAction extends ActionSupport{
 					// System.out.println("inside else");
 					int profileid = (Integer) session.getAttribute("profileId");
 		ownNewsList=ownNewsModel.getOwnNews(profileid);
+		for(ownNewsAction ownNews:ownNewsList){
+			System.out.println("in action :::"+ownNews.getTime());
+		}
+		
 				
 		if(ownNewsList!=null){
 			

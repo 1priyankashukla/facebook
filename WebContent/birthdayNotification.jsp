@@ -5,20 +5,36 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>birthdays</title>
+<title>Insert title here</title>
+
+
+<style>
+a:hover {
+	background-color: #E3E4FA;
+}
+
+a {
+	text-decoration: none;
+}
+</style>
+
+
 </head>
 <body>
 
-<s:if test="flag">
-<img src="images/birthdayIcon.jpg"  /> <s:property value="	displayBirthdayList" />
-</s:if>
-<s:else>
+	<s:if test="flag">
+		<a href="birthdayList.action" onclick=javascript:window.open(
+			"birthdayList.action","birthdayList"); style="color: #00008B"; ><img
+			src="images/birthdayIcon.jpg" /> <s:property
+				value="displayBirthdayList" /></a>
+	</s:if>
+	<s:else>
 
 
-</s:else>
+	</s:else>
 
 
- 
+
 
 </body>
 </html>

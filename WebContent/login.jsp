@@ -13,13 +13,16 @@
     background:#ffecec url('images/error.png') no-repeat 10px 50%;
     
 }
-<!--.connectImage {left:0px;width:46px;} -->
+
 img
 {
 position:absolute;
 left:0px;
+top:100px;
 z-index:-1;
 }
+
+  .label {color:#eeeff4; font-style:normal; }
 </style>
 <head>
 <script  type="text/javascript">
@@ -162,16 +165,26 @@ function matchEmail(){
                 margin: 0;
                 padding: 0">
 
-<div style="position:static;width:1500px;height:100px;background-color:#3b5998">
+<div style="position:absolute;width:730px;height:100px;background-color:#3b5998;left:0px">
  <form action="login" method="post"><br>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; 
  &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
  <font color="white" size="7"><b> facebook </b></font>
- &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
- &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
- &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; 
-  <font color="white" size="2">Email or Phone </font><input type="text" name="emailOrPhone" size="18" >
-  <font color="white" size="2">Password </font><input type="password" name="password" size="18">
-  <input type="submit" value="Log in">
+</div>
+<div style="position:absolute;width:750px;height:100px;background-color:#3b5998;left:730px">
+<br>
+<label>
+ <font color="white" size="2">Email or Phone</font> </label>
+&nbsp; &nbsp; &nbsp;&nbsp;&nbsp; &nbsp; &nbsp; &nbsp;&nbsp;&nbsp;  &nbsp;&nbsp;&nbsp;
+<label>
+<font color="white" size="2">Password </font></label><br>
+<input type="text" name="emailOrPhone" size="18" >&nbsp; 
+ <input type="password" name="password" size="18">&nbsp;
+ <input type="submit" value="Log in"><br>
+  <s:checkbox name="keepMeLoggedIn" fieldValue="true"/>
+  <label class="label"><font size="2"> Keep me logged in</font></label>
+&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; 
+<a href="forgotPassword.jsp" style="text-decoration:none">
+<font style ="color:#eeeff4;"  size="2"> Forgotten your password?</font></a>
 <s:if test="hasActionErrors()"> <div class="alert-box"> <s:actionerror/> </div> </s:if>
 </form>
 </div>
@@ -366,13 +379,13 @@ function matchEmail(){
 <br><br>
  <input type="radio" name="gender" id="female" value="female">
  <label for="female">Female</label>
- <!-- \home\sony\Desktop\mid_termOOAD\facebook\WebContent\Images -->
  <input type="radio" name="gender" id="male" value="male">
   <label for="male">Male</label>
   <br><br>
   <input type="image" src="Images\b1.png" alt="Create an account" width="260" height="65"><br>
 </form>
 </div>
+
 </body>
 </html>
 

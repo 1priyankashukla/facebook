@@ -6,8 +6,9 @@
 <tiles-definitions>
     <definition name="profileLayout" template="/profilePage.jsp">
         <put-attribute name="title" value="" />
-        <put-attribute name="header" value="/header.jsp" />
-         <put-attribute name="coverPic" value="/coverPic.jsp" />
+        <put-attribute name="header1" value="/header1.jsp" />
+        <put-attribute name="header2" value="/header_temp.jsp" />
+        <put-attribute name="coverPic" value="/coverPic_temp.jsp" />
         <put-attribute name="profileHeader" value="/profileHeader.jsp" />
         <put-attribute name="About" value="/AboutonProfile.jsp" />
         <put-attribute name="relationship" value="/relationshipStatus.jsp" />
@@ -19,32 +20,74 @@
     
     <definition name="aboutLayout" template="/aboutMe.jsp">
         <put-attribute name="title" value="" />
-        <put-attribute name="header" value="/header.jsp" />
-         <put-attribute name="coverPic" value="/coverPic.jsp" />
+       <put-attribute name="header1" value="/header1.jsp" />
+        <put-attribute name="header2" value="/header_temp.jsp" />
+         <put-attribute name="coverPic" value="/coverPic_temp.jsp" />
         <put-attribute name="profileHeader" value="/profileHeader.jsp" />
         <put-attribute name="aboutword" value="/aboutWord.jsp" />
-        <put-attribute name="workandEducation" value="/workandEducation.jsp" />
+        <put-attribute name="workandEducation" value="/workandEducation_temp.jsp" />
         <put-attribute name="relationship" value="/relationshipStatus.jsp" />
-        <put-attribute name="places" value="/placesLived.jsp" />
-        <put-attribute name="basic" value="/basicInfo.jsp" />
+        <put-attribute name="places" value="/placeLived_temp.jsp" />
+        <put-attribute name="basic" value="/basicInfo_temp.jsp" />
         <put-attribute name="contact" value="/contactInfo.jsp" />
-        
+            </definition>
+            
+            
+        <definition name="baseLayout" template="/BaseLayout.jsp">
+        <put-attribute name="title" value="" />
+        <put-attribute name="header1" value="/header1.jsp" />
+        <put-attribute name="header2" value="/header_temp.jsp" />
+        <put-attribute name="body" value="/index2.jsp" />
         
     </definition>
     
-         <definition name="baseLayout" template="/BaseLayout.jsp">
+<definition name="homeLayout" template="/homeLayout.jsp">
         <put-attribute name="title" value="" />
-        <put-attribute name="header" value="/header.jsp" />
-         
-        <put-attribute name="body" value="temp.jsp" />
+        <put-attribute name="header1" value="/header1.jsp" />
+        <put-attribute name="header2" value="/header_temp.jsp" />
+        <put-attribute name="navMenu" value="/nav.jsp" />
+        <put-attribute name="newsFeed" value="/temp.jsp" />
+        <put-attribute name="activityLog" value="/activityLog.jsp" />
         
     </definition>
        
        
+        <definition name="addGender" extends="aboutLayout">
+         <put-attribute name="basic" value="/addGender.jsp" />   
+ </definition>
+ 
+ <definition name="addInterestedIn" extends="aboutLayout">
+         <put-attribute name="basic" value="/addInterestedIn.jsp" />   
+ </definition>
+ 
+ <definition name="addRelStatus" extends="aboutLayout">
+          <put-attribute name="relationship" value="/addRelStatus.jsp" />   
+ </definition>
+ 
        
     <definition name="search" extends="baseLayout">
          <put-attribute name="body" value="/searchResult.jsp" />   
  </definition>
+<definition name="newsFeed" extends="homeLayout">
+         <put-attribute name="body" value="/newsFeed.jsp" />   
+ </definition>
+  
+
+<!-- ********************************Shubham Code Start ***************************************-->
+     
+    
+     <definition name="editLocation" extends="aboutLayout">
+         <put-attribute name="places" value="/editLocation.jsp" />   
+ </definition>
+ 
+    
+    	<!-- ********************************Shubham Code End ***************************************-->
+  
+    <definition name="messageLayout" template="/basicMessages.jsp"> 
+        <put-attribute name="selectedConversation" value="/selectedConversation.jsp" />
+        <put-attribute name="recentConversations" value="/recentConversations.jsp" />
+         <put-attribute name="replyToConversation" value="/replyToConversation.jsp" />       
+    </definition> 
  
     
   

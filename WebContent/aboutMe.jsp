@@ -18,19 +18,33 @@ html, body, .container
     
 }
 
-.first {
+.left{
     float: left;
-    width: 100%;
+    width: 50%;
     height: 7%;
+    border: 0px;
+    background-color:#4e69a2;
     
-	   
+	
+  
 }
+.right{
+    float: right;
+    width: 50%;
+    height: 7%;
+    border: 0px;
+    background-color:#4e69a2;
+    
+	
+  
+}
+
 
 .second{
     float: left;
     width: 100%;
     height: 30%;
-    background-image:url('images/index2.jpeg')
+    background-image:url('Images/index2.jpeg')
 }
 
 
@@ -38,49 +52,49 @@ html, body, .container
     float: left;
     width: 100%;
     height: 7%;
-   background-image:url('images/index2.jpeg')
+   background-image:url('Images/index2.jpeg')
     
 }
 
 .fourth {
     float: left;
     width: 50%;
-    height: 40%;
-   background-image:url('images/images.jpeg')   
+    height: 35%;
+   background-image:url('Images/Images.jpeg')   
     
 }
 .fifth {
     float: left;
     width: 50%;
-    height: 10%;
-   background-image:url('images/images.jpeg')   
+    height: 26%;
+   background-image:url('Images/Images.jpeg')   
 }
 
 .sixth {
     float: right;
     width: 50%;
     height: 20%;
-   background-image:url('images/images.jpeg')   
+   background-image:url('Images/Images.jpeg')   
 }
 
 .seventh {
     float: right;
     width: 50%;
     height: 20%;
-   background-image:url('images/images.jpeg')   
+   background-image:url('Images/Images.jpeg')   
 }
 .eighth {
     float: right;
     width: 50%;
-    height: 10%;
-   background-image:url('images/images.jpeg')   
+    height: 13%;
+   background-image:url('Images/Images.jpeg')   
 }
 
 .ninth {
     float: left;
     width: 100%;
-    height: 7%;
-   background-image:url('images/images.jpeg')   
+    height: 3%;
+   background-image:url('Images/Images.jpeg')   
 }
 
 
@@ -97,15 +111,18 @@ a:hover {color: black; text-decoration: none; }
 <body>
 
 <div class="container">
-<div class="first" style="background:#4e69a2;position:fixed"><tiles:insertAttribute name="header" /></div> 
+<div class="left" style="background:#4e69a2"><tiles:insertAttribute name="header1" /></div>
+<div class="right" style="background:#4e69a2"><tiles:insertAttribute name="header2" /></div>
+ 
 <div class="second"><tiles:insertAttribute name="coverPic" /></div>
 <div class="third"><tiles:insertAttribute name="profileHeader" /></div>
 <div class="ninth"><tiles:insertAttribute name="aboutword" /></div>
 <div class="fourth"><tiles:insertAttribute name="workandEducation" /></div>
 <div class="sixth"><tiles:insertAttribute name="places" /></div>
 <div class="seventh"><tiles:insertAttribute name="basic" /></div>
-<div class="eighth"><tiles:insertAttribute name="contact" /></div>
 <div class="fifth"><tiles:insertAttribute name="relationship" /></div>
+<div class="eighth"><tiles:insertAttribute name="contact" /></div>
+
 
 </div>
 

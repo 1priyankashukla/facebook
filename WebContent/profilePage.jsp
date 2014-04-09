@@ -17,20 +17,32 @@ html, body, .container
     min-height: 100%;
     
 }
-
-.first {
+.left{
     float: left;
-    width: 100%;
+    width: 50%;
     height: 10%;
-	background:#4e69a2;
-	position:fixed;
+    border: 0px;
+    background-color:#4e69a2;
+    
+	
+  
+}
+.right{
+    float: right;
+    width: 50%;
+    height: 10%;
+    border: 0px;
+    background-color:#4e69a2;
+    
+	
+  
 }
 
 .second{
     float: left;
     width: 100%;
     height: 30%;
-    background-image:url('images/index2.jpeg')
+    background-image:url('Images/index2.jpeg')
 }
 
 
@@ -38,7 +50,7 @@ html, body, .container
     float: left;
     width: 100%;
     height: 7%;
-   background-image:url('images/index2.jpeg')
+   background-image:url('Images/index2.jpeg')
     
 }
 
@@ -46,28 +58,28 @@ html, body, .container
     float: left;
     width: 30%;
     height: 56%;
-   background-image:url('images/images.jpeg')   
+   background-image:url('Images/Images.jpeg')   
     
 }
 .fifth {
     float: left;
     width: 30%;
     height: 16%;
-   background-image:url('images/images.jpeg')   
+   background-image:url('Images/Images.jpeg')   
 }
 
 .sixth {
     float: right;
     width: 70%;
     height: 16%;
-   background-image:url('images/images.jpeg')   
+   background-image:url('Images/Images.jpeg')   
 }
 
 .seventh {
     float: right;
     width: 70%;
     height: 40%;
-   background-image:url('images/images.jpeg')   
+   background-image:url('Images/Images.jpeg')   
 }
 
 a:link {color: black; text-decoration: underline; }
@@ -83,7 +95,8 @@ a:hover {color: black; text-decoration: none; }
 <body>
 
 <div class="container">
-<div class="first"><tiles:insertAttribute name="header" /></div> 
+<div class="left" style="background:#4e69a2"><tiles:insertAttribute name="header1" /></div>
+<div class="right" style="background:#4e69a2"><tiles:insertAttribute name="header2" /></div>
 <div class="second"><tiles:insertAttribute name="coverPic" /></div>
 <div class="third"><tiles:insertAttribute name="profileHeader" /></div>
 <div class="fourth"><tiles:insertAttribute name="About" /></div>
